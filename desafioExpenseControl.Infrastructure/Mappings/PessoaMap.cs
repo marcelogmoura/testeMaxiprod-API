@@ -24,7 +24,7 @@ namespace ExpenseControl.Infrastructure.Mappings
                 .HasColumnName("IDADE")
                 .IsRequired();
 
-            // Relacionamento 1:N com Cascade Delete (Requisito)
+            // 1:N com Cascade Delete (Requisito)
             builder.HasMany(p => p.Transacoes)
                 .WithOne(t => t.Pessoa)
                 .HasForeignKey(t => t.PessoaId)

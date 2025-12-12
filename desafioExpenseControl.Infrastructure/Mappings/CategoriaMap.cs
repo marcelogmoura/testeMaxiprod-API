@@ -22,7 +22,7 @@ namespace ExpenseControl.Infrastructure.Mappings
 
             builder.Property(c => c.Finalidade)
                 .HasColumnName("FINALIDADE")
-                .HasConversion<int>() //salvar inteiro no banco
+                .HasConversion<int>() //salvar int no banco
                 .IsRequired();
         }
     }

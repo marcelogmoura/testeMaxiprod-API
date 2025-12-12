@@ -1,8 +1,6 @@
 ﻿using DesafioExpenseControl.Domain.Entities;
 using ExpenseControl.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 
 namespace ExpenseControl.Infrastructure.Context
 {
@@ -19,9 +17,6 @@ namespace ExpenseControl.Infrastructure.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            // ESTA LINHA É MÁGICA:
-            // Ela varre o projeto atual (Infrastructure) procurando classes que
-            // herdam de IEntityTypeConfiguration e aplica automaticamente.
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
     }

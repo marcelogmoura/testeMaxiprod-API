@@ -22,7 +22,7 @@ namespace ExpenseControl.Infrastructure.Mappings
 
             builder.Property(t => t.Valor)
                 .HasColumnName("VALOR")
-                .HasColumnType("DECIMAL(18,2)") // Importante para dinheiro
+                .HasColumnType("DECIMAL(18,2)")  
                 .IsRequired();
 
             builder.Property(t => t.Tipo)
@@ -32,7 +32,7 @@ namespace ExpenseControl.Infrastructure.Mappings
 
             builder.Property(t => t.DataCriacao)
                 .HasColumnName("DATA_CRIACAO")
-                .HasDefaultValueSql("CURRENT_TIMESTAMP"); // Opcional: Banco gera data se não enviar
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");  
 
             // Chaves Estrangeiras
             builder.Property(t => t.PessoaId)
@@ -51,7 +51,7 @@ namespace ExpenseControl.Infrastructure.Mappings
             builder.HasOne(t => t.Categoria)
                 .WithMany(c => c.Transacoes)
                 .HasForeignKey(t => t.CategoriaId)
-                .OnDelete(DeleteBehavior.Restrict); // Evita apagar Categoria se tiver transação usada
+                .OnDelete(DeleteBehavior.Restrict); // evita apagar Categoria se tiver transação usada
         }
     }
 }
