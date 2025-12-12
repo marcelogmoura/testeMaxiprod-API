@@ -15,6 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\desafioExpenseControl.Application\desafioExpenseControl.Application.csproj" />
+    <ProjectReference Include="..\desafioExpenseControl.Domain\desafioExpenseControl.Domain.csproj" />
+    <ProjectReference Include="..\desafioExpenseControl.Infrastructure\desafioExpenseControl.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

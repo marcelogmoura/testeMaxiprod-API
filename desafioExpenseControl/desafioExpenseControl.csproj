@@ -10,4 +10,16 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Configs\" />
+    <Folder Include="Middlewares\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\desafioExpenseControl.Application\desafioExpenseControl.Application.csproj" />
+    <ProjectReference Include="..\desafioExpenseControl.Domain\desafioExpenseControl.Domain.csproj" />
+    <ProjectReference Include="..\desafioExpenseControl.Infrastructure\desafioExpenseControl.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
