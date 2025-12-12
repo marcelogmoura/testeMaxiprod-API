@@ -3,7 +3,6 @@ using desafioExpenseControl.Domain.Enums;
 using ExpenseControl.Application.DTOs;
 using ExpenseControl.Application.Interfaces;
 using ExpenseControl.Domain.Entities;
-using ExpenseControl.Domain.Enums;
 using ExpenseControl.Domain.Interfaces.Repositories;
 
 namespace ExpenseControl.Application.Services
@@ -18,12 +17,10 @@ namespace ExpenseControl.Application.Services
         }
 
         public async Task<PessoaDto> CriarAsync(CreatePessoaDto dto)
-        {
-            // Validação simples de Idade
+        {            
             if (dto.Idade <= 0)
                 throw new Exception("Idade deve ser maior que zero.");
-
-            // Mapeamento Manual (RidersApp Style)
+                        
             var pessoa = new Pessoa
             {
                 Nome = dto.Nome,
@@ -53,8 +50,7 @@ namespace ExpenseControl.Application.Services
         }
 
         public async Task<List<PessoaTotaisDto>> ListarTotaisAsync()
-        {
-            // Busca pessoas E suas transações (Eager Loading)
+        {            
             var pessoas = await _pessoaRepository.GetAllWithTransacoesAsync();
 
             var listaTotais = new List<PessoaTotaisDto>();
