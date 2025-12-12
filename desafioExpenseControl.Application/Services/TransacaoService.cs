@@ -24,9 +24,9 @@ namespace ExpenseControl.Application.Services
         }
 
         public async Task<TransacaoDto> CriarAsync(CreateTransacaoDto dto)
-        {
-            //se a pessoa existe
+        {            
             var pessoa = await _pessoaRepository.GetByIdAsync(dto.PessoaId);
+
             if (pessoa == null)
                 throw new Exception("Pessoa não encontrada.");
 
@@ -36,7 +36,6 @@ namespace ExpenseControl.Application.Services
             if (categoria == null)
                 throw new Exception("Categoria não encontrada.");
 
-                        
             if (pessoa.Idade < 18 && dto.Tipo == TipoTransacao.Receita)
             {
                 throw new Exception("Menores de 18 anos não podem registrar Receitas no momento, apenas Despesas.");
@@ -72,26 +71,14 @@ namespace ExpenseControl.Application.Services
                 Tipo = novaTransacao.Tipo,
                 DataCriacao = novaTransacao.DataCriacao,
                 PessoaId = novaTransacao.PessoaId,
-                CategoriaId = novaTransacao.CategoriaId                
-                // NomePessoa = pessoa.Nome,
-                // DescricaoCategoria = categoria.Descricao
+                CategoriaId = novaTransacao.CategoriaId    
             };
         }
 
-        public async Task<List<TransacaoDto>> ListarTodasAsync()
+        public async Task<List<Transacao>> ListarTodasAsync()
         {
-            var transacoes = await _transacaoRepository.GetAllAsync();
-                        
-            return transacoes.Select(t => new TransacaoDto
-            {
-                Id = t.Id,
-                Descricao = t.Descricao,
-                Valor = t.Valor,
-                Tipo = t.Tipo,
-                DataCriacao = t.DataCriacao,
-                PessoaId = t.PessoaId,
-                CategoriaId = t.CategoriaId
-            }).ToList();
+            // Apenas repasse o que vem do repositório (que traz Pessoa e Categoria)
+            return await _transacaoRepository.GetAllAsync();
         }
     }
 }

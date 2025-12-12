@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ExpenseControl.Application.DTOs;
 using ExpenseControl.Application.Interfaces;
+using ExpenseControl.Domain.Entities;
 
 namespace ExpenseControl.API.Controllers
 {
@@ -34,7 +35,7 @@ namespace ExpenseControl.API.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(List<TransacaoDto>), 200)]
+        [ProducesResponseType(typeof(List<Transacao>), 200)]
         [ProducesResponseType(500)]
         public async Task<IActionResult> ListarTodas()
         {
